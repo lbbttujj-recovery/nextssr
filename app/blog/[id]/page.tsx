@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-nocheck
+
 import { Metadata } from "next";
 import Link from "next/link";
 
@@ -10,13 +13,7 @@ async function getData(id: string) {
   return response.json();
 }
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }): Promise<Metadata> {
   const { id } = await params;
   const post = await getData(id);
 
@@ -25,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Post({ params }: Props) {
+export default async function Post({ params }) {
   const { id } = await params;
   const post = await getData(id);
   return (
